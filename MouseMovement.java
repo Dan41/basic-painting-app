@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 public class MouseMovement extends Application {
 	
-	private Square[][] board = new Square[70][70];
+	private Square[][] paint = new Square[70][70];
 	Rectangle rect;
 	private boolean blackSel = false;
 	private boolean redSel = false;
@@ -44,7 +44,7 @@ public class MouseMovement extends Application {
 				Square square = new Square();
 				square.setLayoutX(j * 10);
 				square.setLayoutY(i * 10);
-				board[i][j] = square;
+				paint[i][j] = square;
 				
 				root.getChildren().add(square);
 			}
@@ -119,10 +119,10 @@ public class MouseMovement extends Application {
 		root.setOnMouseDragged(event -> {
 			for (int i = 0; i < 70; i++) {
 				for (int j = 0; j < 70; j++) {
-					if ((board[i][j].getLayoutX() - 20 < event.getSceneX()
-						&& event.getSceneX() < board[i][j].getLayoutX() + 20)
-						&& (board[i][j].getLayoutY() - 20 < event.getSceneY()
-						&& event.getSceneY() < board[i][j].getLayoutY() + 20)) {
+					if ((paint[i][j].getLayoutX() - 20 < event.getSceneX()
+						&& event.getSceneX() < paint[i][j].getLayoutX() + 20)
+						&& (paint[i][j].getLayoutY() - 20 < event.getSceneY()
+						&& event.getSceneY() < paint[i][j].getLayoutY() + 20)) {
 						rect = new Rectangle(10, 10);
 						if (blackSel == true) {
 							rect.setFill(Color.BLACK);
@@ -145,7 +145,7 @@ public class MouseMovement extends Application {
 						else if (eraseSel == true) {
 							rect.setFill(Color.WHITE);
 						}
-						board[i][j].getChildren().add(rect);
+						paint[i][j].getChildren().add(rect);
 					}
 				}
 			}
@@ -178,12 +178,12 @@ public class MouseMovement extends Application {
 			if (event.getCode() == KeyCode.SPACE) {
 				for (int i = 0; i < 70; i++) {
 					for (int j = 0; j < 70; j++) {
-						board[i][j].getChildren().clear();
+						paint[i][j].getChildren().clear();
 						
 						Rectangle start = new Rectangle(10, 10);
 						start.setFill(Color.WHITE);
 						
-						board[i][j].getChildren().add(start);
+						paint[i][j].getChildren().add(start);
 					}
 				}
 			}
