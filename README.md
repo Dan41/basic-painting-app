@@ -1,2 +1,2 @@
 # Basic painting app
-Created this with very little experience
+Basic painting app I created with little experience
